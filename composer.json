@@ -1,0 +1,58 @@
+{
+    "name": "tobischulz/trashmail-checker",
+    "description": "Validates email addresses of known trashmail providers to keep away untrusted registrations.",
+    "keywords": [
+        "trashmail",
+        "disposable emails",
+        "wegwerfemail",
+        "detect suspicious email addresses",
+        "laravel",
+        "validation rule"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tobias Schulz",
+            "email": "tobias@byte.software",
+            "homepage": "https://byte.software",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.2"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^4.3",
+        "orchestra/testbench": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "TobiSchulz\\TrashmailChecker\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TobiSchulz\\TrashmailChecker\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TobiSchulz\\TrashmailChecker\\TrashmailCheckerServiceProvider"
+            ],
+            "aliases": {
+                "TrashmailChecker": "TobiSchulz\\TrashmailChecker\\Facade\\TrashmailChecker"
+            }
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
