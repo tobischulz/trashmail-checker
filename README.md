@@ -1,9 +1,7 @@
 # Trashmail Checker
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/:package_name.svg?style=flat-square)](https://packagist.org/packages/spatie/:package_name)
-[![Build Status](https://img.shields.io/travis/spatie/:package_name/master.svg?style=flat-square)](https://travis-ci.org/spatie/:package_name)
-[![Quality Score](https://img.shields.io/scrutinizer/g/spatie/:package_name.svg?style=flat-square)](https://scrutinizer-ci.com/g/spatie/:package_name)
-[![Total Downloads](https://img.shields.io/packagist/dt/spatie/:package_name.svg?style=flat-square)](https://packagist.org/packages/spatie/:package_name)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/tobischulz/trashmail-checker.svg?style=flat-square)](https://packagist.org/packages/tobischulz/trashmail-checker)
+[![Total Downloads](https://img.shields.io/packagist/dt/tobischulz/trashmail-checker.svg?style=flat-square)](https://packagist.org/packages/tobischulz/trashmail-checker)
 
 Validates email addresses of known trashmail/temporary mail/disposable mail providers, managed by your own database, to keep away unserious registrations.
 
