@@ -3,6 +3,8 @@
 namespace TobiSchulz\TrashmailChecker;
 
 use Illuminate\Support\ServiceProvider;
+use TobiSchulz\TrashmailChecker\Console\Commands\DomainAddCommand;
+use TobiSchulz\TrashmailChecker\Console\Commands\DomainRemoveCommand;
 
 class TrashmailCheckerServiceProvider extends ServiceProvider
 {
@@ -46,6 +48,13 @@ class TrashmailCheckerServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../resources/lang' => resource_path('lang/vendor/trashmailchecker'),
         ]);
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                DomainAddCommand::class,
+                DomainRemoveCommand::class,
+            ]);
+        }
     }
 
     /**

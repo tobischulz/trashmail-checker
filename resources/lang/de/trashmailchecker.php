@@ -3,7 +3,7 @@
 return [
 
     'messages' => [
-        'validation_error' => ':attribute ist keine gültig Adresse.',
+        'validation_error' => ':attribute ist keine gültige Adresse.',
     ],
     
 ];

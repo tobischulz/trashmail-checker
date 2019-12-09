@@ -37,7 +37,7 @@ class ValidateEmailController extends Controller
     public function __invoke(Request $request)
     {
         $request->validate([
-            'email' => ['required', 'email', new NoTrashmail],
+            'email' => ['required', 'email', 'bail', new NoTrashmail],
         ]);
     }
 }
