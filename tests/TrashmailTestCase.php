@@ -2,10 +2,14 @@
 
 namespace TobiSchulz\TrashmailChecker\Tests;
 
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Orchestra\Testbench\TestCase;
 
 class TrashmailTestCase extends TestCase
 {
+    use RefreshDatabase;
+
     /**
     * Setup the test environment.
     */
@@ -13,8 +17,12 @@ class TrashmailTestCase extends TestCase
     {
         parent::setUp();
 
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations'); // load package migrations
+        //$this->loadMigrationsFrom(__DIR__ . '/../database/migrations'); // load package migrations
         $this->artisan('migrate', ['--database' => 'testbench'])->run();    // run migrations
+
+        $this->beforeApplicationDestroyed(function () {
+            $this->artisan('migrate:rollback', ['--database' => 'testbench'])->run();
+        });
 
         config([
             'trashmailchecker.validate_on_development' => true,
@@ -27,7 +35,7 @@ class TrashmailTestCase extends TestCase
      * @param  \Illuminate\Foundation\Application  $app
      * @return void
      */
-    protected function getEnvironmentSetUp($app) : void
+    protected function defineEnvironment($app) : void
     {
         // Setup default database to use sqlite :memory:
         $app['config']->set('database.default', 'testbench');
@@ -36,6 +44,25 @@ class TrashmailTestCase extends TestCase
             'database' => ':memory:',
             'prefix'   => '',
         ]);
+    }
+
+    /**
+     * Define database migrations.
+     *
+     * @return void
+     */
+    protected function defineDatabaseMigrations()
+    {
+        $this->loadLaravelMigrations();
+
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+
+        $this->artisan('migrate', ['--database' => 'testbench'])->run();
+
+        $this->beforeApplicationDestroyed(function () {
+            $this->artisan('migrate:rollback', ['--database' => 'testbench'])->run();
+        });
+        
     }
 
     /**

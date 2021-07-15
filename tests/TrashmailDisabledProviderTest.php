@@ -2,6 +2,7 @@
 
 namespace TobiSchulz\TrashmailChecker\Tests;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use TobiSchulz\TrashmailChecker\TrashmailChecker;
 use TobiSchulz\TrashmailChecker\TrashmailProvider;
 
